@@ -1,3 +1,3 @@
-const DiningPhilosophers = require("./DiningPhilosophers");
+import { DiningPhilosophers } from "./DiningPhilosophers.js";
 
 DiningPhilosophers.main();

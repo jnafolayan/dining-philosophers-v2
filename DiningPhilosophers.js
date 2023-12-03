@@ -1,9 +1,9 @@
-const Semaphore = require("./Semaphore");
-const Philosopher = require("./Philosopher");
+import { Semaphore } from "./Semaphore.js";
+import { Philosopher } from "./Philosopher.js";
 
 const NUM_PHILOSOPHERS = 5;
 
-class DiningPhilosophers {
+export class DiningPhilosophers {
   static main() {
     // Create the forks/chopsticks
     const forks = Array.from(
@@ -29,5 +29,3 @@ class DiningPhilosophers {
     philosophers.forEach((philosopher) => philosopher.simulate());
   }
 }
-
-module.exports = DiningPhilosophers;

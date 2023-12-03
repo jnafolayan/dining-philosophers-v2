@@ -1,4 +1,4 @@
-class Semaphore {
+export class Semaphore {
   /**
    * @param {number} initialCount The number of 'processes' allowed at a time.
    */
@@ -35,5 +35,3 @@ class Semaphore {
     }
   }
 }
-
-module.exports = Semaphore;

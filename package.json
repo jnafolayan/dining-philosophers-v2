@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "An implementation of the dining philosophers solution using semaphores in JavaScript",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"

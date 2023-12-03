@@ -1,13 +1,13 @@
-const chalk = require("chalk");
-const Semaphore = require("./Semaphore");
-const { waitFor } = require("./util");
+import chalk from "chalk";
+import { Semaphore } from "./Semaphore.js";
+import { waitFor, randomColor } from "./util.js";
 
-class Philosopher {
+export class Philosopher {
   /**
-   * 
+   *
    * @param {string} name The name of the philosopher
-   * @param {Semaphore} leftFork Lock for the fork on the left of this philosopher 
-   * @param {Semaphore} rightFork Lock for the fork on the right of this philosopher 
+   * @param {Semaphore} leftFork Lock for the fork on the left of this philosopher
+   * @param {Semaphore} rightFork Lock for the fork on the right of this philosopher
    * @param {Semaphore} eatingLock Lock for eating
    */
   constructor(name, leftFork, rightFork, eatingLock) {
@@ -16,7 +16,7 @@ class Philosopher {
     this.rightFork = rightFork;
     this.eatingLock = eatingLock;
 
-    this._color = chalk
+    this._color = randomColor();
   }
 
   async eat() {
@@ -49,5 +49,3 @@ class Philosopher {
     }
   }
 }
-
-module.exports = Philosopher;
