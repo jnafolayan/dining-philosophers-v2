@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { Semaphore } from "./Semaphore.js";
-import { waitFor, randomColor } from "./util.js";
+import { waitFor, randomColorHex, log } from "./util.js";
 
 export class Philosopher {
   /**
@@ -16,7 +16,7 @@ export class Philosopher {
     this.rightFork = rightFork;
     this.eatingLock = eatingLock;
 
-    this._color = randomColor();
+    this._color = chalk.hex(randomColorHex());
   }
 
   async eat() {
@@ -24,7 +24,7 @@ export class Philosopher {
     await this.leftFork.acquire();
     await this.rightFork.acquire();
 
-    console.log(`${this.name} is eating...`);
+    log(`${this.name} is eating...`, this._color);
 
     // Simulating eating
     const eatingTime = Math.floor(Math.random() * 2000);
@@ -34,12 +34,12 @@ export class Philosopher {
     this.rightFork.release();
     this.eatingLock.release();
 
-    console.log(`${this.name} finished eating.`);
+    log(`${this.name} finished eating.`, this._color);
   }
 
   async simulate() {
     while (true) {
-      console.log(`${this.name} is thinking...`);
+      log(`${this.name} is thinking...`, this._color);
 
       // Simulate thinking
       const thinkingTime = Math.floor(Math.random() * 1000);
