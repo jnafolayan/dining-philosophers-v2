@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import { Semaphore } from "./Semaphore.js";
 import { Philosopher } from "./Philosopher.js";
 
@@ -14,15 +15,20 @@ export class DiningPhilosophers {
     // Allow N-1 philosphers to eat at a time to prevent deadlock
     const eatingLock = new Semaphore(NUM_PHILOSOPHERS);
 
+    const colors = ["magenta", "cyanBright", "red", "green", "yellow"];
+
     const philosophers = Array.from({ length: NUM_PHILOSOPHERS }, (_, i) => {
       const leftFork = forks[i];
       const rightFork = forks[(i + 1) % NUM_PHILOSOPHERS];
-      return new Philosopher(
+      const p = new Philosopher(
         `Philosopher ${i + 1}`,
         leftFork,
         rightFork,
         eatingLock
       );
+      p.setColor(chalk[colors[i]]);
+
+      return p;
     });
 
     // Start philosophers' eating process
